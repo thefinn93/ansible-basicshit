@@ -1,0 +1,17 @@
+- name: Update and upgrade
+  apt: update_cache=yes upgrade=dist
+
+- name: Install pip
+  apt: name=python-pip state=present
+
+- name: Install ansible
+  pip: name=ansible state=latest
+
+- name: Make /etc/ansible/facts.d
+  file: path=/etc/ansible/facts.d state=directory recurse=yes
+
+- name: Install the ansible-pull script
+  template: src=ansible-pull.sh dest=/usr/sbin/run-ansible-pull mode=0755 owner=root group=root
+
+- name: Install cronjob
+  cron: name="Ansible Pull" minute="0" job="/usr/sbin/run-ansible-pull"
