@@ -1,5 +1,5 @@
 ---
-  hosts: localhost
+- hosts: localhost
   roles:
     - basic
     - ansible-pull
