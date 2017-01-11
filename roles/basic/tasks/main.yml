@@ -1,0 +1,8 @@
+- name: Install things from apt
+  apt: name={{ item }} state=latest update_cache=yes
+  items: [git, htop, mosh, tmux, fail2ban, ca-certificates, xtail]
+
+- name: Enable UTF-8 in the locale file
+  lineinfile: line="en_US.UTF-8 UTF-8" dest=/etc/locale.gen
+  notify:
+    - Locale Gen
