@@ -2,4 +2,5 @@
 - hosts: localhost
   roles:
     - basic
-    - ansible-pull
+    - role: ansible-pull
+      tags: setup
