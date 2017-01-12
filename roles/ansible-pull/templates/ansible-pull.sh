@@ -10,8 +10,6 @@ if [ "$1" == "nodisown" ]; then
   if [[ "$?" != "0" ]]; then
     link=$(cat /var/log/ansible.log | curl -F 'sprunge=<-' http://sprunge.us)
     post_to_irc "Ansible failed! Full log at $link"
-  else
-    post_to_irc "Ansible succeeded"
   fi
 else
   $0 nodisown &!
