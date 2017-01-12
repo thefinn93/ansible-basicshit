@@ -4,3 +4,4 @@
     - basic
     - role: ansible-pull
       tags: setup
+    - zsh

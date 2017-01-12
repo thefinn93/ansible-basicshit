@@ -1,0 +1,12 @@
+- name: Install depends
+  apt: name={{ item }} state=present
+  with_items: [git, zsh]
+
+- name: Clone oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh dest=/usr/local/src/oh-my-zsh version=master
+
+- name: Install global zshrc
+  template: src=oh-my-zshrc dest=/etc/zsh/oh-my-zshrc
+
+- name: Load global zshrc
+  lineinfile: dest=/etc/zsh/zshrc line="source /etc/zsh/oh-my-zshrc"
