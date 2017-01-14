@@ -5,3 +5,4 @@
     - role: ansible-pull
       tags: setup
     - zsh
+    - ssh
