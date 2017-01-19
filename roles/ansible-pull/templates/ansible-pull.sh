@@ -12,5 +12,5 @@ if [ "$1" == "nodisown" ]; then
     post_to_irc "Ansible failed! Full log at $link"
   fi
 else
-  $0 nodisown &!
+  $0 nodisown & disown
 fi
