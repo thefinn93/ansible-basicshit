@@ -49,7 +49,19 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent adb mosh colorize command-not-found cp node npm composer pip python virtualenv debian)
+plugins=(git ssh-agent mosh colorize command-not-found cp pip python virtualenv debian)
+if which npm > /dev/null; then
+  plugins=($plugins npm)
+fi
+if which nodejs > /dev/null || which node > /dev/null; then
+  plugins=($plugins node)
+fi
+if which composer > /dev/null; then
+  plugins=($plugins composer)
+fi
+if which adb > /dev/null; then
+  plugins=($plugins adb)
+fi
 
 # User configuration
 
