@@ -56,9 +56,6 @@ fi
 if which nodejs > /dev/null || which node > /dev/null; then
   plugins=($plugins node)
 fi
-if which composer > /dev/null; then
-  plugins=($plugins composer)
-fi
 if which adb > /dev/null; then
   plugins=($plugins adb)
 fi
