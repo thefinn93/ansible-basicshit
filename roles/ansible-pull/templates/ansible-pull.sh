@@ -8,7 +8,7 @@ if [ "$1" == "nodisown" ]; then
   PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
   virtualenv -p python3 /usr/ansible
   /usr/ansible/bin/pip install ansible
-  /usr/ansible/bin/ansible-pull -o -U https://git.callpipe.com/finn/ansible-basicshit.git -s 600 -C master> /var/log/ansible.log
+  /usr/ansible/bin/ansible-pull -o -U {{ ansible_local.pull.repo | default("https://git.callpipe.com/finn/ansible-basicshit.git" }} -s 600 -C {{ ansible_local.pull.branch | default("master") }} > /var/log/ansible.log
   if [[ "$?" != "0" ]]; then
     link=$(cat /var/log/ansible.log | curl -F 'sprunge=<-' http://sprunge.us)
     post_to_irc "Ansible failed! Full log at $link"
