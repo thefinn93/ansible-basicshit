@@ -3,10 +3,7 @@
 
 - name: Install depends
   apt: name={{ item }} state=present
-  with_items: [python-pip, python-dev, libssl-dev, libffi-dev]
-
-- name: Install ansible
-  pip: name=ansible state=latest
+  with_items: [virtualenv, python3-dev, libssl-dev, libffi-dev]
 
 - name: Make /etc/ansible/facts.d
   file: path=/etc/ansible/facts.d state=directory recurse=yes
