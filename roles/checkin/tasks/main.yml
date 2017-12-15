@@ -3,6 +3,4 @@
     channel: "#thefinn93"
     msg: "[{{ ansible_fqdn }}] Successfully updated"
     server: irc.freenode.net
-    port: 7000
-    use_ssl: yes
     nick: "{{ ansible_hostname }}"
