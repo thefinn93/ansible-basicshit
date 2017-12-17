@@ -7,4 +7,5 @@
   "repo": "https://git.callpipe.com/finn/ansible-basicshit.git",
   "branch": "master",
   "minute": "{{ 59 | random }}"
+{% endif %}
 }
