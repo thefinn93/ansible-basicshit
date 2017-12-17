@@ -5,3 +5,4 @@
   lineinfile: line={{ item }} dest=/root/.ssh/authorized_keys create=yes
   with_items:
     - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCNH6UlkkHxR815mjbHBJTomrnaFHCjiG6760MELRFj finn@wash
+    -ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBl5J6Ul7fgmDzflqze0BaGs1x+eZ8Ii/e4Q+4mOF7iO finn@motherfuckin-starboy
