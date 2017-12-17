@@ -1,7 +1,6 @@
 #!/bin/bash
 post_to_irc () {
   ansible localhost -m irc -a "channel=#thefinn93 msg=\"[{{ ansible_fqdn }}] $1\" server=irc.freenode.net port=6697 use_ssl=yes nick={{ ansible_machine_id }}"
-  curl -X POST --data-urlencode "payload={\"username\": \"{{ ansible_fqdn }}\", \"text\": \"$1\"}" https://hooks.slack.com/services/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
 }
 
 if [ "$1" == "nodisown" ]; then
@@ -17,6 +16,7 @@ if [ "$1" == "nodisown" ]; then
   rc="$?"
   if [[ "$rc" != "0" ]]; then
     link=$(cat /var/log/ansible.log | nc termbin.com 9999)
+    curl -X POST --data-urlencode "payload={\"username\": \"{{ ansible_fqdn }}\", \"text\": \"Ansible Pull exited with status `${rc}`. <${link}|Full log>\"}" https://hooks.slack.com/services/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
     post_to_irc "Ansible failed (rc ${rc})! Full log at $link"
   fi
 else
