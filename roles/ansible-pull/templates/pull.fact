@@ -2,7 +2,7 @@
 {% if ansible_local is defined and ansible_local.pull is defined %}
   "repo": "{% if ansible_local.pull.repo %}{{ ansible_local.pull.repo }}{% else %}https://git.callpipe.com/finn/ansible-basicshit.git{% endif %}",
   "branch": "{% if ansible_local.pull.branch %}{{ ansible_local.pull.branch }}{% else %}master{% endif %}"",
-  "minute": {% if ansible_local.pull.minute %}{{ ansible_local.pull.minute{% else %}{{ 59 | random }}{% endif %}
+  "minute": {% if ansible_local.pull.minute %}{{ ansible_local.pull.minute }}{% else %}{{ 59 | random }}{% endif %}
 {% else %}
   "repo": "https://git.callpipe.com/finn/ansible-basicshit.git",
   "branch": "master",
