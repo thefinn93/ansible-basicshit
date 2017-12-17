@@ -8,11 +8,13 @@
 - name: Install ansible
   pip: name=ansible state=latest
 
-- name: Make /etc/ansible/facts.d
-  file: path=/etc/ansible/facts.d state=directory recurse=yes
+- name: Make /etc/ansible/facts.d/pull.fact
+  template:
+    src: pull.fact
+    dest: /etc/ansible/facts.d/pull.fact
 
 - name: Install the ansible-pull script
   template: src=ansible-pull.sh dest=/usr/sbin/run-ansible-pull mode=0755 owner=root group=root
 
 - name: Install cronjob
-  cron: name="Ansible Pull" minute="0" job="/usr/sbin/run-ansible-pull"
+  cron: name="Ansible Pull" minute="{{ ansible_local.pull.minute | default(59 | random) }}" job="/usr/sbin/run-ansible-pull"

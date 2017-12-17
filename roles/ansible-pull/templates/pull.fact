@@ -1,0 +1,10 @@
+{
+{% if ansible_local is defined and ansible_local.pull is defined %}
+  "repo": "{{ ansible_local.pull.repo | default("https://git.callpipe.com/finn/ansible-basicshit.git") }}",
+  "branch": "{{ ansible_local.pull.branch | default("master") }}",
+  "minute": {{ ansible_local.pull.minute | default(59 | random) }}
+{% else %}
+  "repo": "https://git.callpipe.com/finn/ansible-basicshit.git",
+  "branch": "master",
+  "minute": "{{ 59 | random }}"
+}
