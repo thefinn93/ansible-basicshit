@@ -10,6 +10,9 @@
     src: pull.fact
     dest: /etc/ansible/facts.d/pull.fact
 
+- name: recollect facts
+  setup:
+
 - name: Install the ansible-pull script
   template: src=ansible-pull.sh dest=/usr/sbin/run-ansible-pull mode=0755 owner=root group=root
 
