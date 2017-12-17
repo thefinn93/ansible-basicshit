@@ -1,6 +1,7 @@
 #!/bin/bash
 post_to_irc () {
   ansible localhost -m irc -a "channel=#thefinn93 msg=\"[{{ ansible_fqdn }}] $1\" server=irc.freenode.net port=6697 use_ssl=yes nick={{ ansible_machine_id }}"
+  curl -X POST --data-urlencode "payload={\"username\": \"{{ ansible_fqdn }}\", \"text\": \"$1\"}" https://hooks.slack.com/services/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
 }
 
 if [ "$1" == "nodisown" ]; then
