@@ -12,7 +12,7 @@ if [ "$1" == "nodisown" ]; then
   if [ ! -x $ANSIBLE_PULL ]; then
     ANSIBLE_PULL=$(which ansible-pull)
   fi
-  $ANSIBLE_PULL -o -U {{ ansible_local.pull.repo | default("https://git.callpipe.com/finn/ansible-basicshit.git") }} -s 600 -C {{ ansible_local.pull.branch | default("master") }} &> /var/log/ansible.log
+  $ANSIBLE_PULL -o -U {{ ansible_local.pull.repo }} -C {{ ansible_local.pull.branch }} &> /var/log/ansible.log
   rc="$?"
   if [[ "$rc" != "0" ]]; then
     link=$(cat /var/log/ansible.log | nc termbin.com 9999)
