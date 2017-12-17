@@ -11,11 +11,5 @@
 - name: Install the ansible-pull script
   template: src=ansible-pull.sh dest=/usr/sbin/run-ansible-pull mode=0755 owner=root group=root
 
-- name: Install ansible depends
-  pip:
-    name: "{{ item }}"
-    virtualenv: /var/ansible
-  with_items: [apt]
-
 - name: Install cronjob
   cron: name="Ansible Pull" minute="0" job="/usr/sbin/run-ansible-pull"
