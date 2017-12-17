@@ -5,6 +5,10 @@
   apt: name={{ item }} state=present
   with_items: [virtualenv, python-dev, libssl-dev, libffi-dev, netcat]
 
+- name: debug
+  debug:
+    var: ansible_local.repo
+
 - name: Make /etc/ansible/facts.d/pull.fact
   template:
     src: pull.fact
@@ -12,10 +16,6 @@
 
 - name: recollect facts
   setup:
-
-- name: debug
-  debug:
-    var: ansible_local.repo
 
 - name: Install the ansible-pull script
   template: src=ansible-pull.sh dest=/usr/sbin/run-ansible-pull mode=0755 owner=root group=root
