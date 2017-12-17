@@ -5,10 +5,6 @@
   apt: name={{ item }} state=present
   with_items: [virtualenv, python-dev, libssl-dev, libffi-dev, netcat]
 
-- name: debug
-  debug:
-    var: ansible_local.pull
-
 - name: Make /etc/ansible/facts.d/pull.fact
   template:
     src: pull.fact
