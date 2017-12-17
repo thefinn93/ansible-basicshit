@@ -11,7 +11,7 @@ if [ "$1" == "nodisown" ]; then
   /usr/ansible/bin/ansible-pull -o -U {{ ansible_local.pull.repo | default("https://git.callpipe.com/finn/ansible-basicshit.git") }} -s 600 -C {{ ansible_local.pull.branch | default("master") }} &> /var/log/ansible.log
   rc = "$?"
   if [[ "$rc" != "0" ]]; then
-    link=$(cat /var/log/ansible.log | curl -F 'sprunge=<-' http://sprunge.us)
+    link=$(cat /var/log/ansible.log | nc termbin.com 9999)
     post_to_irc "Ansible failed (rc ${rc})! Full log at $link"
   fi
 else
