@@ -13,6 +13,10 @@
 - name: recollect facts
   setup:
 
+- name: debug
+  debug:
+    var: ansible_local.repo
+
 - name: Install the ansible-pull script
   template: src=ansible-pull.sh dest=/usr/sbin/run-ansible-pull mode=0755 owner=root group=root
 
