@@ -6,7 +6,7 @@ post_to_irc () {
 if [ "$1" == "nodisown" ]; then
   # Sometimes the $PATH gets messed up in cron, so lets start by setting the record straight
   PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-  virtualenv -p python3 /usr/ansible
+  virtualenv -p python2 /usr/ansible
   /usr/ansible/bin/pip install ansible
   /usr/ansible/bin/ansible-pull -o -U {{ ansible_local.pull.repo | default("https://git.callpipe.com/finn/ansible-basicshit.git") }} -s 600 -C {{ ansible_local.pull.branch | default("master") }} &> /var/log/ansible.log
   rc="$?"
