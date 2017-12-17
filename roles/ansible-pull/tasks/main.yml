@@ -7,7 +7,7 @@
 
 - name: debug
   debug:
-    var: ansible_local.repo
+    var: ansible_local.pull
 
 - name: Make /etc/ansible/facts.d/pull.fact
   template:
