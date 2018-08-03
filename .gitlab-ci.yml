@@ -1,0 +1,10 @@
+stages:
+  - test
+
+test:
+  stage: test
+  image: python:latest
+  before_script:
+    - pip install ansible==2.6.2
+  script:
+    - ansible-playbook --syntax-check -v local.yml
