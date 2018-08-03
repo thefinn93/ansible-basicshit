@@ -7,7 +7,7 @@ if [ "$1" == "nodisown" ]; then
   # Sometimes the $PATH gets messed up in cron, so lets start by setting the record straight
   PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
   virtualenv --system-site-packages -p python2 /usr/ansible
-  /usr/ansible/bin/pip install ansible==2.4.2.0
+  /usr/ansible/bin/pip install ansible==2.6.2.0
   ANSIBLE_PULL="/usr/ansible/bin/ansible-pull"
   if [ ! -x $ANSIBLE_PULL ]; then
     ANSIBLE_PULL=$(which ansible-pull)
