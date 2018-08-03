@@ -1,0 +1,8 @@
+stages:
+  - test
+
+test:
+  stage: test
+  image: ansible/ansible:latest
+  script:
+    - ansible-playbook --syntax-check -v local.yml
